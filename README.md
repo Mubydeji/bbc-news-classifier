@@ -22,15 +22,15 @@ dataset page and handled accordingly.
 
 Four approaches, trained and evaluated on the same 70/15/15 stratified split:
 
-1. **TF-IDF + Logistic Regression** — unigrams and bigrams, 10,000 max features.
-2. **Pretrained Word2Vec (averaged) + Logistic Regression** — Google's 300-dimensional
+1. **TF-IDF + Logistic Regression**: unigrams and bigrams, 10,000 max features.
+2. **Pretrained Word2Vec (averaged) + Logistic Regression**: Google's 300-dimensional
    vectors (trained on ~100 billion words), since training Word2Vec from scratch on
    only 1,557 documents would produce undertrained embeddings. Each document is
    represented as the mean of its recognized words' vectors.
-3. **Fine-tuned DistilBERT** — full model fine-tuning, checkpointed every epoch and
+3. **Fine-tuned DistilBERT**: full model fine-tuning, checkpointed every epoch and
    selected by validation loss rather than final epoch, since a preliminary run
    showed real overfitting risk on a dataset this small.
-4. **Zero-shot LLM classification** — no training data at all. Llama 3.1 8B (via
+4. **Zero-shot LLM classification**: no training data at all. Llama 3.1 8B (via
    Groq) is prompted with only the category names and article text.
 
 ## Results
